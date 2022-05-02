@@ -1,0 +1,258 @@
+<mvc:View controllerName="com.aymax.apave.sd.BureauOrdre.BureauOrdreDisplay.controller.Worklist" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:smartVariantManagement="sap.ui.comp.smartvariants" height="100%"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<f:DynamicPage id="DEListPage" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:actions>
+					<!--<Button id="historyBt" icon="sap-icon://customer-history" text="{i18n>ButtonHistorique}" iconFirst="true" type="Transparent"-->
+					<!--	press="onNavigateToHistorique"/>-->
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader id="DEListPageHeader" pinnable="true">
+				<f:content>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" liveMode="true" persistencyKey="Document_entrant" entitySet="Document_entrantSet"
+						enableBasicSearch="false" showFilterConfiguration="true" useToolbar="false" clear="onClear" showClearOnFB="true">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration label="{i18n>REF_DOC}" key="Zrefde" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="1">
+								<smartFilterBar:customControl>
+									<Input id="InputFilter_Zrefde" liveChange="onLiveChangeDocRef" placeholder="{i18n>PlaceHolderRefDoc}" showSuggestion="true"
+										suggestionItems="{/Document_entrantSet}">
+										<suggestionItems>
+											<core:Item id="ID01" key="{Zrefde}" text="{Zrefde}"/>
+										</suggestionItems>
+									</Input>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zrefcat" label="{i18n>Categorie}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="2">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxCategorie" selectionChange="onSelectionChangeCategorie" items="{ path: '/CATEGORYSet'}">
+										<core:Item key="{Refcat}" text="{Libcat}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zscatref" label="{i18n>SousCategorie}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="3">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxSousCategorie" items="{ path: '/SUB_CATEGORYSet'}">
+										<core:Item key="{Scatref}" text="{Refcat} - {Libscat}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zrefnr" label="{i18n>NatureReception}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="4">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxNatureReception" items="{ path: '/Nature_RECEPSet'}">
+										<core:Item key="{RefNr}" text="{DesNr}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zreftypobj" label="{i18n>TypeObjet}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="5">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxTypeObjet" items="{path: '/Object_TYPESet'}">
+										<core:Item key="{Reftypobj}" text="{Libtypobj}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zclient" label="{i18n>Client}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="6">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxClient" width="350px" items="{ path: '/ClientSet'}">
+										<core:Item key="{Kunnr}" text="{Expediteur}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zemp" label="{i18n>Employe}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="7">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxEmployees" items="{ path: '/EmployeesSet'}">
+										<core:Item key="{Zemp}" text="{Zlibemp}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zcserv" label="{i18n>Service}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="8">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxService" width="350px" items="{ path: '/ServicesSet'}">
+										<core:Item key="{Zcserv}" text="{Zlibserv}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="DesStatut" label="{i18n>Statut}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="9">
+								<smartFilterBar:customControl>
+									<MultiComboBox id="MultiBoxStatut" items="{ path: '/StatutSet'}">
+										<core:Item key="{Des}" text="{DesStatut}"/>
+									</MultiComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zdar" label="{i18n>DateArrive}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="10">
+								<smartFilterBar:customControl>
+									<DateRangeSelection id="InputFilter_dateArrive" delimiter="-" displayFormat="dd/MM/yyyy" class="sapUiMediumMarginBottom"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zdem" label="{i18n>DateEmission}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="11">
+								<smartFilterBar:customControl>
+									<DateRangeSelection id="InputFilter_dateEmission" delimiter="-" displayFormat="dd/MM/yyyy" class="sapUiMediumMarginBottom"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zdec" label="{i18n>DateEcheance}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="12">
+								<smartFilterBar:customControl>
+									<DateRangeSelection id="InputFilter_dateEchance" delimiter="-" displayFormat="dd/MM/yyyy" class="sapUiMediumMarginBottom"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="dateCrea" key="dateCrea" label="{i18n>datecre}" visibleInAdvancedArea="true"
+								preventInitialDataFetchInValueHelpDialog="false" index="13">
+								<smartFilterBar:customControl>
+									<DateRangeSelection id="InputFilter_dateCreation" delimiter="-" displayFormat="dd/MM/yyyy" class="sapUiMediumMarginBottom"/>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+					</smartFilterBar:SmartFilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<smartTable:SmartTable id="table" entitySet="Document_entrantSet" smartFilterId="smartFilterBar" tableType="ResponsiveTable"
+				app:p13nDialogSettings="{group:{visible:false}}" useExportToExcel="true" useVariantManagement="false" useTablePersonalisation="true"
+				showTablePersonalisation="true" showRowCount="true" enableAutoBinding="true" demandPopin="true" class="sapUiResponsiveContentPadding"
+				beforeRebindTable="onBeforeRebindTable" header="{i18n>TableHeader}" persistencyKey="Document_entrant">
+				<smartTable:customToolbar>
+					<OverflowToolbar id="tableOverFlowToolbar" design="Transparent">
+						<ToolbarSpacer id="tableOverFlowToolbarSpacer"/>
+						<Button id="BtnDiffuser" text="{i18n>ButtonDiffuser}" press="onDiffuser" enabled="{UIConfig>/editability/Diffuser}"
+							tooltip="{UIConfig>/tooltip/Diffuser}"/>
+						<!--<Button id="BtnModifier" text="{i18n>ButtonModifier}" press="onNavigateToCrossApp"/>-->
+						<Button id="BtnModifier" text="{i18n>ButtonModifier}" press="onNavToDocUpdate" enabled="{UIConfig>/editability/Modifier}"
+							tooltip="{UIConfig>/tooltip/Modifier}"/>
+						<Button id="BtnCreate" text="{i18n>ButtonTraiter}" press="onNavigateToCrossApp"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+				<Table id="tab" mode="MultiSelect" growing="true" selectionChange="onSelectionChange">
+					<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zrefde", "leadingProperty": "Zrefde", "sortProperty": "Zrefde"}'/>
+							</customData>
+							<Text id="Id_Text_REF_DOC" text="{i18n>REF_DOC}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zstatid", "leadingProperty": "Zstatid", "sortProperty": "Zstatid"}'/>
+							</customData>
+							<Text id="Id_Text_Diff" text="{i18n>Diffuse}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zdar", "leadingProperty": "Zdar", "sortProperty": "Zdar"}'/>
+							</customData>
+							<Text id="Id_Text_DateA" text="{i18n>DateArrive}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zreftypobj", "leadingProperty": "Zreftypobj", "sortProperty": "Zreftypobj"}'/>
+							</customData>
+							<Text id="Id_Text_Client" text="{i18n>Client}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zlibserv", "leadingProperty": "Zlibserv", "sortProperty": "Zlibserv"}'/>
+							</customData>
+							<Text id="Id_Text_Objet" text="{i18n>Objet}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zlibcat", "leadingProperty": "Zlibcat", "sortProperty": "Zlibcat"}'/>
+							</customData>
+							<Text id="Id_Text_Service" text="{i18n>Service}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zlibscat", "leadingProperty": "Zlibscat", "sortProperty": "Zlibscat"}'/>
+							</customData>
+							<Text id="Id_Text_Cate" text="{i18n>Categorie}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zlibclient", "leadingProperty": "Zlibclient", "sortProperty": "Zlibclient"}'/>
+							</customData>
+							<Text id="Id_Text_SubCat" text="{i18n>SousCategorie}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "DateCre", "leadingProperty": "DateCre", "sortProperty": "DateCre"}'/>
+							</customData>
+							<Text id="Id_Text_DateC" text="{i18n>datecre}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zdem", "leadingProperty": "Zdem", "sortProperty": "Zdem"}'/>
+							</customData>
+							<Text id="Id_Text_DateEmission" text="{i18n>DateEmission}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" visible="false">
+							<customData>
+								<core:CustomData key="p13nData" value='\{"columnKey": "Zdec", "leadingProperty": "Zdec", "sortProperty": "Zdec"}'/>
+							</customData>
+							<Text id="Id_Text_DateEch" text="{i18n>DateEcheance}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<HBox alignItems="Center">
+									<f:Avatar
+										src="sap-icon://sap-box"
+										class="sapUiTinyMarginEnd"
+										displaySize="XS">
+									</f:Avatar>
+									<Link id="Id_Cell_ObjectIdentifier_Zrefde"
+										text="{path: 'Zrefde', formatter: '.formatter.refFormatter'}"
+										emphasized="true"
+										wrapping="true"
+										press="handleDetailPopoverPress"/>
+								</HBox>
+								<!--<Link id="Id_Cell_ObjectIdentifier_Zrefde" text="{path: 'Zrefde', formatter: '.formatter.refFormatter'}" emphasized="true" press="handleDetailPopoverPress"/>-->
+								<core:Icon src="{path: 'Zstatid', formatter: '.formatter.statutDiffuse'}" class="size1"
+									color="{path: 'Zstatid', formatter: '.formatter.statutColor'}">
+									<core:layoutData>
+										<FlexItemData growFactor="1"/>
+									</core:layoutData>
+								</core:Icon>
+								<Text id="Id_Cell_Text_designation"
+									text="{ path: 'Zdar' ,type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }} }"/>
+								<Text id="Id_Cell_Text_Client" text="{Zlibclient}"/>
+								<Text id="Id_Cell_Text_TypeObject" text="{Zreftypobj}"/>
+								<Text id="Id_Cell_Text_SERVICE" text="{Zlibserv}"/>
+								<Text id="Id_Cell_Text_Category" text="{Zlibcat}"/>
+								<Text id="Id_Cell_TextSubCategory" text="{Zlibscat}"/>
+								<Text id="Id_Cell_Text_DateCre"
+									text="{ path: 'DateCre' ,type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }} }"/>
+								<Text id="Id_Cell_Text_DateEm"
+									text="{ path: 'Zdem' ,type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }} }"/>
+								<Text id="Id_Cell_Text_DateEch"
+									text="{ path: 'Zdec' ,type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }} }"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar id="footerTb" visible="{= ${messages>/}.length > 0}">
+				<Button id="popUpBt" icon="sap-icon://message-popup" text="{=${messages>/}.length}" press="openMessageFragment"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

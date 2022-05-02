@@ -1,0 +1,15 @@
+{
+	"rolesecretaire": false,
+	"visibility": {},
+	"editability": {
+		"Diffuser" : false,
+		"Modifier" : false
+	},
+	"enability": {},
+	"count": {},
+	"valueState": {},
+	"tooltip": {
+		"Diffuser" : "Veuillez selectionnez un ou plusieurs documents",
+		"Modifier" : "Veuillez selectionnez un document"
+	}
+}

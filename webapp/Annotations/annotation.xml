@@ -1,0 +1,15 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZSDGW_OFFICE_ORDER_APP_SRV/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="ZSDGW_OFFICE_ORDER_APP_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="boliste.Annotations.annotation.ZSDGW_OFFICE_ORDER_APP_SRV">
+			<Annotations Target="Metadata.Document_entrant/CreeParFullName">
+				<Annotation Term="Common.Label" String="{@i18n&gt;CREE_PAR}"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

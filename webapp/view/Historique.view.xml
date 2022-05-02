@@ -1,0 +1,131 @@
+<mvc:View controllerName="com.aymax.apave.sd.BureauOrdre.BureauOrdreDisplay.controller.Historique"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:f="sap.f"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:smartTable="sap.ui.comp.smarttable">
+	
+	<semantic:SemanticPage id="semanticPage">
+		<semantic:titleHeading>
+			<Title id="titleHistorique"
+				text="{i18n>LabelHistorique}" />
+		</semantic:titleHeading>
+		
+		<semantic:titleCustomTextActions>
+			<Button id="buttonBackToSearch"
+				text="{i18n>ButtonBackToSearch}"
+				icon="sap-icon://search"
+				type="Ghost"
+				press="onNavigateToRecherche"/>
+				
+		</semantic:titleCustomTextActions>
+		
+		<semantic:content>
+			
+			<smartTable:SmartTable id="smartTableHistorique"
+				enableAutoBinding="true"
+				beforeRebindTable="onBeforeRebindTableHistorique"
+				
+				requestAtLeastFields="Id,Date"
+				initiallyVisibleFields="Date"
+				ignoreFromPersonalisation="Type,TypeDesc,Param,Designation"
+				
+				tableType="ResponsiveTable"
+				placeToolbarInTable="true"
+				header="{i18n>docEntrant}"
+				noData="{i18n>LabelNoHistorique}"
+				showRowCount="true"
+				demandPopin="true"
+				showTablePersonalisation="true"
+				useExportToExcel="true"
+				beforeExport="onBeforeExportSynthese"
+				persistencyKey="smartTableSynthese"
+				useTablePersonalisation="true"
+				showVariantManagement="false"
+				class="sapUiResponsiveContentPadding">
+				
+				<smartTable:customToolbar>
+					<OverflowToolbar design="Transparent">
+						<ToolbarSpacer id="toolbarSpacer"/>
+						<Button id="buttonRefresh"
+							icon="sap-icon://refresh"
+							press="onRefresh"/>
+						<ToolbarSeparator id="toolbarSeparator"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+				
+				<Table id="tableSynthese"
+					fixedLayout="false"
+					alternateRowColors="{userPreferences>/table/alternateRowColors}"
+					growing="true"
+					growingThreshold="20"
+					growingTriggerText="{i18n>LabelMoreHistorique}"
+					growingScrollToLoad="true" 
+					sticky="ColumnHeaders,HeaderToolbar"
+					itemPress="onListItemPress">
+					<columns>
+						<Column id="columnDesignation"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+							<Text id="columnTextDesignation" text="{i18n>designation}" maxLines="1"/>
+						</Column>
+						<Column id="columnStatut"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+							<Text id="columnTextStatut" text="{i18n>Statut}" maxLines="1"/>
+						</Column>
+						<Column id="columnLastViste"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+							<Text id="columnTextLastVisite" text="{i18n>LastVisite}" maxLines="1"/>
+						</Column>
+						<Column id="columnDateDiffusion"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+							<Text id="columnTextDateDiffusion" text="{i18n>DateDiffusion}" maxLines="1"/>
+						</Column>
+						<Column id="columnDateDerniereModificatino"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+							<Text id="columnTextDateLastModification" text="{i18n>DateLastModif}" maxLines="1"/>
+						</Column>
+						<Column id="columnModifierPar"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+							<Text id="columnTextModifierPar" text="{i18n>ModifierPar}" maxLines="1"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="columnListItemSynthese"
+							type="Navigation">
+							<cells>
+								<HBox id="hBoxDesignation"
+									alignItems="Center">
+									<f:Avatar id="avatarDesignation"
+										src="sap-icon://cause"
+										class="sapUiTinyMarginEnd"
+										displaySize="XS"/>
+									<Link id="linkDesignation"
+										text="1234/5678"
+										emphasized="true"
+										wrapping="true"
+										press="openQuickView"/>
+								</HBox>
+								<Text id="statutValue" text="Diffusé"></Text>
+								<Text id="VisiteLeValue" text="18.07.2020"></Text>
+								<Text id="DiffuseLe" text="18.07.2020"></Text>
+								<Text id="ModifieLe" text="18.07.2020"></Text>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				
+			</smartTable:SmartTable>
+		</semantic:content>
+	
+	</semantic:SemanticPage>
+	
+</mvc:View>

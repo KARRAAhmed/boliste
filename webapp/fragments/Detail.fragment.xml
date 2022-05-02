@@ -1,0 +1,182 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" width="100%">
+	<ResponsivePopover title="{i18n>DocumentEntrant}{Zrefde}" class="sapUiContentPadding" showCloseButton="false" placement="Auto">
+		<l:VerticalLayout class="sapUiContentPadding" width="100%">
+			<l:content>
+				<!--		Fragment Header   -->
+				<ObjectHeader title="{i18n>PopoverTitle}{Zrefde}" icon="sap-icon://document" number="" numberUnit="" numberState="None"
+					titleActive="false" backgroundDesign="Transparent" condensed="false" visible="true">
+					<attributes/>
+					<statuses/>
+					<markers/>
+				</ObjectHeader>
+				<!--		Fragment Container   -->
+				<form:Form width="100%" editable="true" visible="true">
+					<form:formContainers>
+						<form:FormContainer visible="true">
+							<form:formElements>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zlibcat/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zlibcat}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zlibscat/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zlibscat}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zlibtypobj/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zlibtypobj}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/ZlibNr/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{ZlibNr}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zlibclient/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zlibclient}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zemp/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+											visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zemp}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zcompt/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zcompt}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zstatde/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zstatde}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zdar/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+											visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{path:'Zdar',type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }}}"
+											width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zdem/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+											visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{path:'Zdem',type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }}}"
+											width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zdif/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+											visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{path:'Zdif', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium', source: { pattern: 'yyyy/MM/dd' }} }"
+											width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								
+									<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/ZLIBSERVPI/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{ZLIBSERVPI}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								
+									<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/ZCSERV/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{ZCSERV}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								
+									<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/ZLIBSERV/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{ZLIBSERV}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								
+									<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/Zcom/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{Zcom}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								
+									<form:FormElement visible="true">
+									<form:label>
+										<Label text="{/#Document_entrant/InstitutionDePaie/@sap:label}" design="Standard" width="100%" required="false" textAlign="Begin"
+											textDirection="Inherit" visible="true"/>
+									</form:label>
+									<form:fields>
+										<Text text="{InstitutionDePaie}" width="300px" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									</form:fields>
+								</form:FormElement>
+								
+								
+							</form:formElements>
+							<form:title/>
+						</form:FormContainer>
+					</form:formContainers>
+					<form:layout>
+						<form:ResponsiveGridLayout adjustLabelSpan="true" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+					</form:layout>
+				</form:Form>
+			</l:content>
+		</l:VerticalLayout>
+	</ResponsivePopover>
+</core:FragmentDefinition>
